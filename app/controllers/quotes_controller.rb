@@ -14,6 +14,18 @@ class QuotesController < Rulers::Controller
     render :quote, :obj => m
   end
 
+  def update_quote
+    attrs = {
+      "id" => "1",
+      "submitter" => "Foobar",
+      "quote" => "I bought an ant farm once...those fellas didn't grow shit!",
+      "attribution" => "Mitch Hedburg"
+    }
+    FileModel.update attrs
+    quotes = FileModel.all
+    render :index, :quotes => quotes
+  end
+
   def a_quote
     render :a_quote, :noun => :winking
   end
